@@ -29,8 +29,9 @@ app.get("/api/hello", function (req, res) {
 //  console.log('Your app is listening on port ' + listener.address().port);
 // });
 
-app.get("/api/:date?", function ( request, response ) {
-  const reqTime = request.params.date;
+app.get("/api/:date?", function ( req, res ) {
+  const reqTime = req.params.date;
+  console.log( reqTime );
     
   if (!reqTime){
     var date = new Date();
