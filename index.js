@@ -33,8 +33,7 @@ var listener = app.listen(process.env.PORT || 3000, function () {
 
 app.get("/api/:date?", function ( request, response ) {
   const reqTime = request.params.date;
-  });
-  
+    
   if (!reqTime){
     var date = new Date();
   };
@@ -44,7 +43,11 @@ app.get("/api/:date?", function ( request, response ) {
     var date = new Date(parseInt(reqTime));
   };
 
-  if ( date.toUTCString() === "Inalid Date" ){
-    
+  if ( date.toUTCString() === "Invalid Date" ){
+     response.json( { error: "Invalid Date"});
+  } else{
+    return response.json( { unix: date.getTime(),
+     utc: date.toUTCString()});
   }
+});
 
