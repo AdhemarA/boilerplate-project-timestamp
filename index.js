@@ -31,7 +31,20 @@ var listener = app.listen(process.env.PORT || 3000, function () {
   console.log('Your app is listening on port ' + listener.address().port);
 });
 
-app.get("/api/:date?", ( request, response ) =>{
-  response.json({ "Date": request.params.date} );
-  });  
+app.get("/api/:date?", function ( request, response ) {
+  const reqTime = request.params.date;
+  });
+  
+  if (!reqTime){
+    var date = new Date();
+  };
+  if ( isNaN( reqTime)){
+    var date = new Date(reqTime);
+  } else{
+    var date = new Date(parseInt(reqTime));
+  };
+
+  if ( date.toUTCString() === "Inalid Date" ){
+    
+  }
 
