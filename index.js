@@ -31,9 +31,7 @@ var listener = app.listen(process.env.PORT || 3000, function () {
   console.log('Your app is listening on port ' + listener.address().port);
 });
 
-let responseTime = "";
+app.get("/api/:date?", ( request, response ) =>{
+  response.json({ "Date": request.params.date} );
+  });  
 
-app.get( "/api/:date?", ( request, response ) => {
-  responseTime = new Date().getTime();
-  response.json(responseTime);
-});
