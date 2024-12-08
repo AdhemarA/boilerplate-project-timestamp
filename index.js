@@ -31,8 +31,9 @@ var listener = app.listen(process.env.PORT || 3000, function () {
   console.log('Your app is listening on port ' + listener.address().port);
 });
 
-app.get( "/api/date?", ( request, response ) => {
-  responseTime["unix"] = new Date().getTime();
-  responseTime["utc"] = new Date().toUTCString();
+let responseTime = "";
+
+app.get( "/api/:date?", ( request, response ) => {
+  responseTime = new Date().getTime();
   response.json(responseTime);
 });
