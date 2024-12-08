@@ -31,28 +31,8 @@ var listener = app.listen(process.env.PORT || 3000, function () {
   console.log('Your app is listening on port ' + listener.address().port);
 });
 
-let responseTime = {};
-
-app.get( "/api/timestamp:input",( request, response ) => {
-  let input = request.params.input;
-
-  if( input.includes("-")){
-    responseTime["unix"] = new Date().getTime();
-    responseTime["utc"] = new Date().toUTCString();
-  }else{
-    input.parseInt(input);
-    responseTime["unix"] = new Date().getTime();
-    responseTime["utc"] = new Date().toUTCString();
-  }
-  if( !responseTime["unix"] || !responseTime["utc"] ){
-    response.json({ error: "Invalid Date"});
-  }
-  response.json(responseTime);
-});
-
-app.get( "/api/timestamp", ( request, response ) => {
+app.get( "/api/date?", ( request, response ) => {
   responseTime["unix"] = new Date().getTime();
   responseTime["utc"] = new Date().toUTCString();
   response.json(responseTime);
 });
-
