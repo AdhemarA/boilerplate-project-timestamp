@@ -51,7 +51,7 @@ app.get("/api/:date?", function ( req, res ) {
 });
 
 app.get("/api/timestamp", function ( req, res ) {
-  const reqTime = req.params.date;
-  var date = new Date(parseInt(reqTime));
-  res.json({ unix: reqTime.valueOf(), utc: reqTime.toUTCString() });
+  responseObject["unix"] = new Date.getTime();
+  responseObject["utc"] = new Date.toUTCString();
+  res.json( responseObject );
 });  
