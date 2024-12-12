@@ -32,8 +32,7 @@ var listener = app.listen(process.env.PORT || 3000, function () {
 
 app.get("/api/:date?", function ( req, res ) {
   const reqTime = req.params.date;
-  console.log( reqTime );
-    
+     
   if (!reqTime){
     var date = new Date();
   };
@@ -49,7 +48,10 @@ app.get("/api/:date?", function ( req, res ) {
     return res.json( { unix: date.getTime(),
      utc: date.toUTCString()});
   }
-
-  res.json({ unix: resDate.valueOf(), utc: resDate.toUTCString() });
 });
 
+app.get("/api/timestamp", function ( req, res ) {
+  const reqTime = req.params.date;
+  var date = new Date(parseInt(reqTime));
+  res.json({ unix: reqTime.valueOf(), utc: reqTime.toUTCString() });
+});  
