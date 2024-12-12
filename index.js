@@ -37,10 +37,7 @@ app.get("/api/:date?", function ( req, res ) {
     var date = new Date();
   };
   if ( isNaN( reqTime)){
-//      var date = new Date( Date.now());
-//      return res.json( { unix: date.getTime(),
-//        utc: date.toUTCString()});
-     var date = new Date(valueOf);
+     var date = new Date(reqTime);
   } else{
       var date = new Date(parseInt(reqTime));
   };
@@ -49,6 +46,8 @@ app.get("/api/:date?", function ( req, res ) {
      res.json( { error: "Invalid Date"});
   } else{
     return res.json( { unix: date.getTime(),
-     utc: date.toUTCString()});
+    utc: date.toUTCString()});
   }
+ 
 });
+
