@@ -30,16 +30,21 @@ var listener = app.listen(process.env.PORT || 3000, function () {
    console.log('Your app is listening on port ' + listener.address().port);
 });
 
-app.get("/api/:date?", function ( req, res ) {
+app.get(["/api/:date?","/api/"], function ( req, res ) {
   const reqTime = req.params.date;
      
   if (!reqTime){
     var date = new Date();
+    var objDate = {
+      unix: date.valueOf(),
+      utc: date.toUTCString(),
+    };
+    return res.json(objDate);
   };
   if ( isNaN( reqTime)){
      var date = new Date(reqTime);
   } else{
-      var date = new Date(parseInt(reqTime));
+     var date = new Date(parseInt(reqTime));
   };
 
   if ( date.toUTCString() === "Invalid Date" ){
