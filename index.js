@@ -34,16 +34,7 @@ var listener = app.listen(process.env.PORT || 3000, function () {
 app.get(["/api/:date?","/api/"], function ( req, res ) {
   const reqTime = req.params.date;
      
-  var listener = app.listen(process.env.PORT || 3000, function () {
-   console.log('Your app is listening on port ' + listener.address().port);
-});
-});
-
-app.get("/api/:date?", function ( request, response ) {
-  const reqTime = request.params.date;
-    console.log( reqTime);
-
-  if (!reqTime){
+   if (!reqTime){
     var date = new Date();
     var objDate = {
       unix: date.valueOf(),
