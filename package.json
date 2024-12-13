@@ -8,11 +8,7 @@
   },
   "dependencies": {
     "cors": "^2.8.0",
-<<<<<<< Updated upstream
-    "express": "^4.21.2",
-=======
     "express": "^4.12.4",
->>>>>>> Stashed changes
     "npm": "^10.9.2"
   },
   "repository": {

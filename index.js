@@ -26,7 +26,7 @@ app.get("/api/hello", function (req, res) {
 });
 
 // Listen on port set in environment variable or default to 3000
-<<<<<<< Updated upstream
+
 var listener = app.listen(process.env.PORT || 3000, function () {
    console.log('Your app is listening on port ' + listener.address().port);
 });
@@ -34,15 +34,15 @@ var listener = app.listen(process.env.PORT || 3000, function () {
 app.get(["/api/:date?","/api/"], function ( req, res ) {
   const reqTime = req.params.date;
      
-=======
-//var listener = app.listen(process.env.PORT || 3000, function () {
-// console.log('Your app is listening on port ' + listener.address().port);
-//});
+  var listener = app.listen(process.env.PORT || 3000, function () {
+   console.log('Your app is listening on port ' + listener.address().port);
+});
+});
 
 app.get("/api/:date?", function ( request, response ) {
   const reqTime = request.params.date;
     console.log( reqTime);
->>>>>>> Stashed changes
+
   if (!reqTime){
     var date = new Date();
     var objDate = {
@@ -60,8 +60,7 @@ app.get("/api/:date?", function ( request, response ) {
   if ( date.toUTCString() === "Invalid Date" ){
      res.json( { error: "Invalid Date"});
   } else{
-    return res.json( { unix: date.getTime(),
-    utc: date.toUTCString()});
+    return res.json( { unix: date.getTime(), utc: date.toUTCString()});
   }
  
 });
